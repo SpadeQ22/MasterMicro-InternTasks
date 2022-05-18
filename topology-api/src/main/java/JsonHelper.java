@@ -11,12 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JsonHelper {
-    public static void main(String[] args) throws IOException {
-        Topology t = readJson("topology.json");
-        Database.database.add(t);
-    }
+
     static Topology readJson(String path) throws IOException {
-        String jsonData = new String(Files.readAllBytes(Path.of("D:\\Programming\\Interview-Tasks\\topology-api\\src\\main\\java\\topology.json")));
+        String jsonData = new String(Files.readAllBytes(Path.of(path)));
         Map<String, Object> jsonTop = new Gson().fromJson(jsonData, Map.class);
         String id = (String) jsonTop.get("id");
         var jsonDevices = new Gson().fromJson(jsonTop.get("components").toString(), ArrayList.class);
